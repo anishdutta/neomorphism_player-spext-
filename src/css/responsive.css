@@ -1,0 +1,97 @@
+     
+        @media(max-width: 800px){
+            .player{
+                width: 100%;
+
+            }
+            .player-info{
+               float: none;
+               width: 100%;
+            }
+            .myPlayer{
+                padding: 25px;
+            }
+            .playicons {
+                width: 100%;
+                margin: auto;
+            }
+            /* .share-btn{
+                margin-top: 22px;
+                border-radius: 50% !important;
+            } */
+        }
+        @media(max-width: 550px){
+            .player-info{
+                height: 250px;
+                border-radius: 30px;
+
+            }
+            .nowplaying{
+                height: 30px;
+            }
+            svg{
+                width: 26px;
+                height: 30px;
+            }
+            .playicons{
+                width: 160px;
+                margin-top: -35px;
+            }
+
+            .playicon{
+                width: 23px;
+                height: 39px;
+                
+            }
+            .playicon img{
+                width: 18px
+            }
+              .share-btn{
+                width: 25% !important;
+            }
+            .frame {
+                width: 159px;
+                height: 159.22px;
+
+            }
+            .inner-player-info{
+                place-items: start;
+                padding-top: 10%;
+            }
+            
+        .frame-content h5 {
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 12px;
+            line-height: 21px;
+            display: flex;
+            font-feature-settings: 'liga'off;
+
+            color: #AEAEAE;
+
+            text-shadow: 1px 1px 1px #FFFFFF;
+        }
+
+        .frame-content h1 {
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 900;
+            font-size: 19px;
+            display: flex;
+            font-feature-settings: 'liga'off;
+
+            color: #86748D;
+        }
+
+        .frame-content h2 {
+            font-family: Roboto;
+            font-style: normal;
+            font-size: 15px;
+            line-height: 37px;
+            display: flex;
+            font-feature-settings: 'liga'off;
+
+            color: #86748D;
+        }
+        }
