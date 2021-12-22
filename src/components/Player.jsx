@@ -1,5 +1,5 @@
 import React from "react";
-import play from "../Assets/Icons/Group 3 (1).png";
+import play from "../Assets/Icons/play (1).png";
 import pause from "../Assets/Icons/Group 3 (1).png";
 import previous from "../Assets/Icons/Vector 1.png";
 import next from "../Assets/Icons/Vector 2.png";
@@ -9,7 +9,84 @@ import suffle3 from "../Assets/Icons/Group (1).png";
 import suffle4 from "../Assets/Icons/Group (1).png";
 import { useEffect } from "react";
 
-const Player = () => {
+const Player = ({
+  currentSong,
+	setCurrentSong,
+	isPlaying,
+	setIsPlaying,
+	audioRef,
+	songInfo,
+	setSongInfo,
+	songs,
+	setSongs,
+}) => {
+  const playSongHandler = () => {
+		if (isPlaying) {
+			audioRef.current.pause();
+			setIsPlaying(!isPlaying);
+		} else {
+			audioRef.current.play();
+			setIsPlaying(!isPlaying);
+		}
+	};
+
+  const togglePlayPauseIcon = () => {
+    console.log(isPlaying);
+		if (isPlaying === true) {
+			return pause;
+		} else {
+			return play;
+		}
+	};
+
+  const getTime = (time) => {
+		let minute = Math.floor(time / 60);
+		let second = ("0" + Math.floor(time % 60)).slice(-2);
+		return `${minute}:${second}`;
+	};
+
+	const dragHandler = (e) => {
+		audioRef.current.currentTime = e.target.value;
+		setSongInfo({ ...songInfo, currentTime: e.target.value });
+	};
+
+	const skipTrackHandler = async (direction) => {
+		let currentIndex = songs.findIndex((song) => song.id === currentSong.id);
+		if (direction === "skip-forward") {
+			await setCurrentSong(songs[(currentIndex + 1) % songs.length]);
+			activeLibraryHandler(songs[(currentIndex + 1) % songs.length]);
+		} else if (direction === "skip-back") {
+			if ((currentIndex - 1) % songs.length === -1) {
+				await setCurrentSong(songs[songs.length - 1]);
+				activeLibraryHandler(songs[songs.length - 1]);
+			} else {
+				await setCurrentSong(songs[(currentIndex - 1) % songs.length]);
+				activeLibraryHandler(songs[(currentIndex - 1) % songs.length]);
+			}
+		}
+		if (isPlaying) {
+			audioRef.current.play();
+		}
+	};
+
+	const activeLibraryHandler = (newSong) => {
+		const newSongs = songs.map((song) => {
+			if (song.id === newSong.id) {
+				return {
+					...song,
+					active: true,
+				};
+			} else {
+				return {
+					...song,
+					active: false,
+				};
+			}
+		});
+		setSongs(newSongs);
+	};
+
+
   useEffect(() => {
     const slider = document.getElementById("Myline");
     const min = slider.min;
@@ -40,7 +117,7 @@ const Player = () => {
           <div className="col col-md-1 vert-center">
             <img alt="PurpleHaze" src={suffle2} width="15px" />
           </div>
-          <div className="ctrl col col-md-2">
+          <div className="ctrl col col-md-2" >
             <div className="control-btn-sm">
               <div className="purple-sm">
                 <img alt="PurpleHaze" src={previous} width="5px" />
@@ -50,7 +127,11 @@ const Player = () => {
           <div className="ctrl  col-md-4">
             <div className="control-btn">
               <div className="purple">
-                <img alt="PurpleHaze" src={pause} width="15px" />
+                <img 
+                onClick={playSongHandler}
+                alt="PurpleHaze" 
+                src={togglePlayPauseIcon()}
+                 width="15px" />
               </div>
             </div>
           </div>
@@ -74,13 +155,14 @@ const Player = () => {
           className="outer-line"
           id="Myline"
           type="range"
-          min="0"
-          max="45"
-          defaultValue="3"
+          onChange={dragHandler}
+						min={0}
+						max={songInfo.duration || 0}
+						value={songInfo.currentTime}
         />
         <div className="timline-details">
-          <h5 className="right-align">2:00:01</h5>
-          <h5 className="left-align">2:00:01</h5>
+          <h5 className="right-align">{getTime(songInfo.currentTime || 0)}</h5>
+          <h5 className="left-align">{getTime(songInfo.duration || 0)}</h5>
         </div>
       </div>
     </div>
