@@ -2,21 +2,38 @@ import React from "react";
 import pHaze from "../Assets/Images/codex-omega.png";
 import share from "../Assets/Icons/Vector (10).png";
 import playlist from "../Assets/Icons/Vector (9).png";
-function Playerinfo() {
+import styled from "styled-components";
+
+
+
+function Playerinfo({ currentSong }) {
+  const  SongImg = styled.div`
+  display: block;
+width: 95%;
+height: 90%;
+background-color: wheat;
+border-radius: 30px;
+background-image: url('${props => props.image}') ;
+`
   return (
     <div className="player-info">
       <div className="inner-player-info row">
         <div className="frame col col-md-6">
-          <img alt="PurpleHaze" src={pHaze} />
+          {/* <img alt="PurpleHaze" src={pHaze} /> */}
+          {/* <songImg image = {'../Assets/Images/codex-omega.png'}>
+          </songImg> */}
+          <SongImg className="SongImg" image = {currentSong.cover}>
+
+          </SongImg>
         </div>
         <div className="frame-content col col-md-6">
           <div className="nowplaying">
             <h5>Now Playing</h5>
           </div>
           <div className="songdetail">
-            <h1>Purple Haze</h1>
-            <h2>Jimi Hendrix</h2>
-            <h5>Woodstock</h5>
+            <h1>{currentSong.name}</h1>
+            <h2>{currentSong.artist}</h2>
+            <h5>{currentSong.album}</h5>
           </div>
           <div className="playicons row">
             <div className="col col-md-4 playicon">

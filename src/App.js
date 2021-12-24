@@ -4,6 +4,7 @@ import Playerinfo from "./components/player-info";
 import Player from "./components/Player";
 import { useState, useRef } from "react";
 import data from "./data";
+import styled from "styled-components";
 
 function App() {
   const audioRef = useRef(null);
@@ -49,11 +50,14 @@ function App() {
 		}
 	};
 
+
+
+  
+
   return (
-    
-    <div className="container myPlayer">
-      <Playerinfo    
-      />
+    <SongImg2 color={currentSong.color[0]}>
+      <div className="container myPlayer">
+      <Playerinfo   currentSong={currentSong} />
       <Player
       isPlaying={isPlaying}
       setIsPlaying={setIsPlaying}
@@ -72,7 +76,18 @@ function App() {
 				src={currentSong.audio}
 			/>
     </div>
-  );
+    </SongImg2>  
+    
+  ) ;
 }
+
+const  SongImg2 = styled.div`
+width: 100%;
+height: 100vh !important;
+position: absolute;
+top:0;
+
+background-color: ${props => props.color};
+`
 
 export default App;
