@@ -163,9 +163,15 @@
 
             box-shadow: -10px -10px 15px #FFFFFF, 10px 10px 10px rgba(0, 0, 0, 0.05), inset 10px 10px 10px rgba(0, 0, 0, 0.05), inset -10px -10px 20px #FFFFFF;
         }
+        
         .playicon:hover {
          
-            box-shadow: -10px -10px 15px #FFFFFF, 10px 10px 10px rgba(0, 0, 0, 0.05), inset -15px -15px 10px rgba(0, 0, 0, 0.05), inset 10px 10px 20px #FFFFFF;
+            box-shadow: none;
+       
+        
+        }.playicon:active {
+         
+          box-shadow: -10px -10px 15px #FFFFFF, 10px 10px 10px rgba(0, 0, 0, 0.05), inset 10px 10px 10px rgba(0, 0, 0, 0.05), inset -10px -10px 20px #FFFFFF;
        
         
         }
@@ -248,8 +254,7 @@
           cursor: pointer;
         }
         .player-control div img:hover{
-          transform: scale(1.2);
-          filter: drop-shadow(1px 0 0px #dcdcec);
+          
                 }
 
         .player-control {
