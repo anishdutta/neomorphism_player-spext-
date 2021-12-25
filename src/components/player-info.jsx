@@ -224,8 +224,8 @@ background-image: url('${props => props.image}') ;
                         y2="2.42089"
                         gradientUnits="userSpaceOnUse"
                       >
-                        <stop stop-color="#5F30C1" />
-                        <stop offset="1" stop-color="#968EF1" />
+                        <stop stop-color={currentSong.color[0]} />
+                        <stop offset="1" stop-color={currentSong.color[1]} />
                       </linearGradient>
                     </defs>
                   </svg>

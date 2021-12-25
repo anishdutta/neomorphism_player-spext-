@@ -3,10 +3,10 @@ import play from "../Assets/Icons/play (1).png";
 import pause from "../Assets/Icons/Group 3 (1).png";
 import previous from "../Assets/Icons/Vector 1.png";
 import next from "../Assets/Icons/Vector 2.png";
-import suffle from "../Assets/Icons/Group (1).png";
+import suffle from "../Assets/Icons/Group (2).png";
 import suffle2 from "../Assets/Icons/Group (1).png";
-import suffle3 from "../Assets/Icons/Group (1).png";
-import suffle4 from "../Assets/Icons/Group (1).png";
+import suffle3 from "../Assets/Icons/Group.png";
+import suffle4 from "../Assets/Icons/Vector (12).png";
 import { useEffect } from "react";
 import styled from "styled-components";
 
@@ -121,9 +121,18 @@ const Player = ({
     };
     
   });
-  const  PurpleDiv = styled.div`
-  background: linear-gradient(159.16deg, ${props => props.color} 26.46%, rgba(63, 45, 137, 0) 116.55%);
-`
+  
+
+const styles = {
+  hoverStyle: {
+    "boxShadow": '-3px -3px 5px #FFFFFF, 3px 3px 5px rgba(0, 0, 0, 0.05), inset 3px 3px 5px rgba(0, 0, 0, 0.05), inset -3px -3px 5px #FFFFFF',
+
+    "&::-webkit-slider-thumb": { 
+      'border-radius': '50%',
+      'background': 'linear-gradient(327.56deg, #5D24D6 19.23%, #7E74ED 81.76%)'   
+     },
+  }
+};
 
 
   return (
@@ -131,12 +140,12 @@ const Player = ({
       <div className="player-control ">
         <div className="row">
           <div className="col vert-center col-md-1">
-            <img alt="PurpleHaze" src={suffle} width="15px" />
+            <img alt="PurpleHaze" src={suffle3} width="15px" />
           </div>
           <div className="col col-md-1 vert-center">
             <img alt="PurpleHaze" src={suffle2} width="15px" />
           </div>
-          <div className="ctrl col col-md-2" >
+          <div className="ctrl col col-md-2 previous" >
             <div className="control-btn-sm" onClick={() => skipTrackHandler("skip-back")}>
             <PurpleDiv color={currentSong.color[1]} className="purple-sm">
                   <img alt="PurpleHaze" src={previous} width="5px" />
@@ -153,7 +162,7 @@ const Player = ({
 
             </div>
           </div>
-          <div className="ctrl  col col-md-2 ">
+          <div className="ctrl  col col-md-2 next">
             <div className="control-btn-sm" 					onClick={() => skipTrackHandler("skip-forward")}>
             <PurpleDiv color={currentSong.color[1]} className="purple-sm">
                 <img alt="PurpleHaze" src={next} width="5px" />
@@ -161,7 +170,7 @@ const Player = ({
             </div>
           </div>
           <div className="col col-md-1 vert-center">
-            <img alt="PurpleHaze" src={suffle3} width="15px" />
+            <img alt="PurpleHaze" src={suffle} width="15px" />
           </div>
           <div className="col col-md-1 vert-center">
             <img alt="PurpleHaze" src={suffle4} width="15px" />
@@ -171,6 +180,7 @@ const Player = ({
       <div className="player-timeline">
         <input
           className="outer-line"
+          style={styles.hoverStyle}
           id="Myline"
           type="range"
           onChange={dragHandler}
@@ -186,5 +196,9 @@ const Player = ({
     </div>
   );
 };
-
+const  PurpleDiv = styled.div`
+  background: linear-gradient(159.16deg, ${props => props.color} 26.46%, rgba(63, 45, 137, 0) 116.55%);
+`
 export default Player;
+
+

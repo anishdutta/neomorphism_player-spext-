@@ -1,5 +1,55 @@
      
         @media(max-width: 800px){
+            .player-control {
+                margin-left: 0px;
+              }
+              .player-control .col-md-2 {
+                width: 18%;
+            }
+            .player-control .previous{
+              margin-left: 3%;
+    
+            }
+            .player-control .next{
+              margin-right: 3%;
+    
+            }
+    
+            .player-control .col-md-4 {
+                width: 21%;
+            }
+    
+            .player-control .col-md-1 {
+                width: 9%;
+            }
+            .control-btn{
+                width: 50px;
+                height: 50px;
+    
+            }
+            .purple{
+                width: 35px;
+                height: 35px;
+            }
+            .control-btn-sm{
+                width: 30px;
+                height: 30px;
+    
+            }
+            #me{
+                height: 20.8px;
+                width: 2px;
+            }
+            #me::before, #me::after {
+                height: 18px;
+                width: 2.5px;
+                left: 14.5px;
+
+            }
+            .purple-sm{
+                width: 20px;
+                height: 20px;
+            }
             .player{
                 width: 100%;
 
