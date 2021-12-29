@@ -166,7 +166,7 @@
         
         .playicon:hover {
          
-            box-shadow: none;
+          box-shadow: -10px -10px 15px #FFFFFF, 10px 10px 10px rgba(0, 0, 0, 0.05), inset -15px -15px 10px rgba(0, 0, 0, 0.05), inset 10px 10px 20px #FFFFFF;
        
         
         }.playicon:active {
